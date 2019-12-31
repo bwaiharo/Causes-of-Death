@@ -13,7 +13,7 @@ with open(r'C:\Users\benab\OneDrive\Documents\Bootcampsot\Causes-of-Death\NY_cle
     obj = json.loads(data)
     print(obj["columns"])
     columns = obj["columns"]
-    # print(obj["data"])
+    
     for row in obj["data"]:
         count = 0
         finalrow = {}
@@ -25,7 +25,7 @@ with open(r'C:\Users\benab\OneDrive\Documents\Bootcampsot\Causes-of-Death\NY_cle
         db.ny_death.insert_one(finalrow)
         
 
-# db.NYJson.insert_many(death_list).inserted_ids
+
 
 
 

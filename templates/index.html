@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>NY Deaths</title>
+  </head>
+  <body>
+    <h1> Deaths in NY by factors such as age, race, gender, etc. </h1>
+    <p> Ways people are dying in NY </p>
+    <!-- <p><a class="btn btn-primary btn-lg" href="/dataJSON" role="button">Get Data!</a></p> -->
+    <ul class="menu">
+        <!-- {% for name in vacation %} -->
+        <!-- <li><h3>{{ vacation.Gender }}</h3></li> -->
+        <!-- {% endfor %} -->
+    </ul>
+    <!-- The div that holds our map -->
+  <div id="map-id"></div>
+  <div id="bar"></div>
+  <div id="bubble"></div>
+  <div id="pie"></div>
+  <div id="my_dataviz"></div>
+  <!-- D3 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+  <!-- Leaflet JavaScript -->
+  <script src="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+  <script type="text/javascript" src="static/js/config.js"></script>
+  <!-- Our JavaScript -->
+  <script type="text/javascript" src="static/js/logic.js"></script>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  <script type="text/javascript" src="static/js/script.js"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  </body>
+</html>
