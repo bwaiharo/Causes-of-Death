@@ -36,12 +36,12 @@ def jsonData():
     # print(female)
     # for k, v in itertools.groupby(female_by_year, key=itemgetter("Year")):
     #     print(k)
-    # result = {} 
-    # year_female=set()
-    # for i in female:
-    #     year_female.add(i["Year"])
-    #     # print (f"Deaths: {i.get('Deaths')} Year: {i.get('Year')}") 
-    # print(year_female)
+    result = {} 
+    year_female=set()
+    for i in female:
+        year_female.add(i["Year"])
+        # print (f"Deaths: {i.get('Deaths')} Year: {i.get('Year')}") 
+    print(year_female)
     year_sum=defaultdict(int)
     year_female=set()
     for i in female:
@@ -55,9 +55,8 @@ def jsonData():
         
         # print (f"Deaths: {i.get('Deaths')} Year: {i.get('Year')}") 
     year = year_sum.keys() 
-    print(year_sum)
     print(type(year))
-   # death = year_sum.values() 
+    # death = year_sum.values() 
     # print(year[0])
     # print(death[0])
     fby = {

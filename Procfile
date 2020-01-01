@@ -1,1 +1,1 @@
-web: gunicorn pet_pals.app:app
+web: gunicorn Causes-of-death.app:app
