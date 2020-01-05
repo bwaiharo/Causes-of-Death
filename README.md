@@ -1,4 +1,4 @@
-![](https://image.shutterstock.com/image-photo/lightning-storm-over-lake-balaton-260nw-745531396.jpg)
+![](https://media.giphy.com/media/Qx4ltILRcYzHK50B9R/giphy.gif)
  
 # Death
  
