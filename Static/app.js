@@ -15,20 +15,20 @@ function buildPlot() {
    female_d.forEach(e => e.forEach(f => f_death.push(f.Deaths)))
    female_d.forEach(e => e.forEach(f => f_notes.push(f.Notes)))
     
-   console.log(response.notes_female.notes)
+  //  console.log(response.notes_female.notes)
     // console.log(female_d[0]['Notes']);
     // console.log(male_totals[0]['year']);
 
     var trace1 = {
         x: female_totals[0]['year'],
         y: female_totals[0]['deaths'],
-        name: 'Female Deaths by Year (1999 - 2017)',
+        name: 'Female Deaths by Year (2007 - 2017)',
         type: "bar"
       };
       var trace2 = {
         x: male_totals[0]['year'],
         y: male_totals[0]['deaths'],
-        name: 'Male Deaths by Year (1999 - 2017)',
+        name: 'Male Deaths by Year (2007 - 2017)',
         type: "bar"
       };
       
@@ -39,7 +39,7 @@ function buildPlot() {
 
     // console.log(data);
     var layout = {
-      title: "Male v. Female Total Deaths by Year (1999-2017)",
+      title: "Male v. Female Total Deaths by Year (2007-2017)",
       xaxis: {
         title: "Deaths"
       },
@@ -52,27 +52,30 @@ function buildPlot() {
 
 
 
+
     var trace3 = {
-      x: f_death.slice(0,100),
-      y: f_population.slice(0,100),
-      text: f_notes.slice(0,100),
-      mode: 'markers',
-      marker: {
-        color: f_population.slice(0,100),
-        size: f_death.slice(0,100)
-      }
+      x: response.age_group_f.age,
+      y: response.age_group_f.deaths,
+      type: 'scatter',
+      mode: 'lines+markers',
+      name: 'Male Age Groups'
     };
     
-    var data2 = [trace3];
-    
-    var layout2 = {
-      title: 'Bubble Chart Hover Text',
-      showlegend: false,
-      height: 600,
-      // width: 600
+    var trace4 = {
+      x: response.age_group_m.age,
+      y: response.age_group_m.deaths, 
+      type: 'scatter',
+      mode: 'lines+markers',
+      name: 'Female Age Groups'
     };
     
-    Plotly.newPlot('bubble', data2, layout2);
+    var layout4 = {
+      title: 'Death Rates by Age Groups (Male and Female)'
+    };
+
+    var data4 = [trace3, trace4];
+    
+    Plotly.newPlot('histogram', data4, layout4);
 
 
 
