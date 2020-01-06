@@ -168,7 +168,7 @@ let data1;
 d3.json(url).then(function(response2) {
 // d3.csv("Book4.csv").then(function (data2) {
     let data2 = response2.book_4
-    // console.log(data2);
+    console.log(data2);
     let allstates = data2.map(obj => obj.State)
     let states = [];
     for (let i = 0; i < allstates.length; i++) {
@@ -181,31 +181,31 @@ d3.json(url).then(function(response2) {
     console.log(data1);
    
 });
-
+​
 var createchart1 = function (state) {
     var svg2 = d3.select("#svg2")
     svg2.html("")
     var margin = {
         top: 20,
-        right: 20,
+        right: 30,
         bottom: 30,
-        left: 40
+        left: 50
     },
         width = +svg2.attr("width") - margin.left - margin.right,
         height = +svg2.attr("height") - margin.top - margin.bottom;
-
+​
     // var color = d3.scaleOrdinal(["#ca0020","#f4a582","#d5d5d5","#92c5de","#0571b0","#660000", "#ffcc7d", "#707d84", ]);
     // var color = d3.scaleOrdinal(d3.schemeCategory10);
     var color1 = d3.scaleOrdinal(d3.schemeSet3);
     var x1 = d3.scaleBand().rangeRound([0, width])
         .padding(0.1),
         y1 = d3.scaleLinear().rangeRound([height, 0]);
-
+​
     var g1 = svg2.append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     var y1maxdomain = d3.max(data1[state], function (d) {
         return d.Deaths;
-
+​
     });
     console.log(y1maxdomain);
     x1.domain(data1[state].map(function (d) {
@@ -213,18 +213,18 @@ var createchart1 = function (state) {
      
     }));
     y1.domain([y1maxdomain / 2, y1maxdomain * 1.05]);
-
+​
     var x2 = d3.scaleBand()
         .rangeRound([0, x1.bandwidth()])
         .padding(0.05)
         .domain(data1[state].map(function (d) {
             return d.Year;
         }));
-
+​
     color1.domain(data1[state].map(function (d) {
         return d.Year;
     }));
-
+​
     var groups1 = g1.selectAll(null)
         .data(data1[state])
         .enter()
@@ -232,7 +232,7 @@ var createchart1 = function (state) {
         .attr("transform", function (d) {
             return "translate(" + x1(d.Months) + ",0)";
         })
-
+​
     var bars1 = groups1.selectAll(null)
         .data(function (d) {
             return [d]
@@ -252,12 +252,12 @@ var createchart1 = function (state) {
         .attr("fill", function (d) {
             return color1(d.Year)
         })
-
+​
     g1.append("g")
         .attr("class", "axis")
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(x1));
-
+​
     g1.append("g")
         .attr("class", "axis")
         .call(d3.axisLeft(y1).ticks(null, "s"))
@@ -268,7 +268,31 @@ var createchart1 = function (state) {
         .attr("fill", "#000")
         .attr("font-weight", "bold")
         .attr("text-anchor", "start")
-        .text("Number of Deaths");
+        .text("Number of Deaths per Month");
+// };
+var allyears = [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017]
+    var legend = svg2.selectAll(".legend")
+        .data(allyears.map(function (d) { return d; }).reverse())
+        .enter().append("g")
+        .attr("class", "legend")
+        .attr("transform", function (d, i) { return "translate(0," + i * 20 + ")"; })
+        .style("opacity", "0")
+        .style("font-size", 8);
+​
+    legend.append("rect")
+        .attr("x", width + 40)
+        .attr("width", 10)
+        .attr("height", 10)
+        .style("fill", function (d) { return color1(d); });
+​
+    legend.append("text")
+        .attr("x", width + 55)
+        .attr("y", 5)
+        .attr("dy", ".20em")
+        .style("text-anchor", "start")
+        .text(function (d) { return d; });
+​
+    legend.transition().duration(500).delay(function (d, i) { return 1300 + 100 * i; }).style("opacity", "1");
 
 };
 

@@ -1,5 +1,5 @@
 
-d3.json("../deathdata.js")
+// d3.json("../deathdata.js")
 
 var map = L.map("map").setView([37.8, -96], 4);
 
