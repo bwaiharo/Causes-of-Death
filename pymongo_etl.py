@@ -13,7 +13,7 @@ with open(r'NY_clean_data.json', 'r',encoding = 'utf-8') as data_file:
     obj = json.loads(data)
     print(obj["columns"])
     columns = obj["columns"]
-    # print(obj["data"])
+    
     for row in obj["data"]:
         count = 0
         finalrow = {}
@@ -23,4 +23,17 @@ with open(r'NY_clean_data.json', 'r',encoding = 'utf-8') as data_file:
             finalrow[columns[count]] = d
             count += 1
         db.ny_death.insert_one(finalrow)
+<<<<<<< HEAD
         
+=======
+        
+
+
+
+
+
+
+# nydeath = db.NYJson.find()
+# for student in nydeath:
+#     print(student)
+>>>>>>> af97c2c3da42618b443123731c6c5c9950f17979
